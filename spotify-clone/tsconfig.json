@@ -33,7 +33,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "heroicons.d.ts"
+    "heroicons.d.ts",
+    "next-env.d.ts", "**/*.ts", "**/*.tsx", "src/types/next-auth.d.ts",
   ],
   "exclude": [
     "node_modules"
