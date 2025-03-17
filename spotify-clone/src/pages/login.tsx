@@ -1,6 +1,7 @@
+import { GetServerSideProps } from 'next'
 import { ClientSafeProvider, getProviders, signIn } from 'next-auth/react'
 import Image from 'next/image'
-import spotifyLogo from '.public/spotify-logo.png'
+import spotifyLogo from '../assets/spotify-logo.png'
 
 interface Props {
 	providers: Awaited<ReturnType<typeof getProviders>>
@@ -16,6 +17,8 @@ const Login = ({ providers }: Props) => {
 				<Image
 					src={spotifyLogo}
 					alt='Spotify Logo'
+					height='200px'
+					width='200px'
 				/>
 			</div>
 
@@ -32,3 +35,12 @@ const Login = ({ providers }: Props) => {
 }
 
 export default Login
+
+export const getServerSideProps: GetServerSideProps<Props> = async context => {
+	const providers = await getProviders()
+	return {
+		props: {
+			providers
+		}
+	}
+}
